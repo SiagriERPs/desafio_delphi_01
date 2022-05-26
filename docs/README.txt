@@ -1,6 +1,6 @@
 Projeto trader
 
-Primeiramtente gostaria de agradeçer a oportunidade de fazer esse projeto, tive varias ideias para desenvolver o projeto trader,
+Primeiramente gostaria de agradeçer a oportunidade de fazer esse projeto, tive varias ideias para desenvolver o projeto trader,
 o que está sendo entregue foi o que melhor consegui pensar no prazo/tempo disponivel que tive para entregar, sei que tenho muito a aprender ainda e 
 gostaria muito de aprender com vocês, obrigado.
 
