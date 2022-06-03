@@ -116,6 +116,19 @@
             <Form>frmTradeCons</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uDM.pas">
+            <Form>DM</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Funcoes_Globais\uFuncoes_Globais.pas"/>
+        <DCCReference Include="Classes\uClasseProdutor.pas"/>
+        <DCCReference Include="Classes\uClasseGrao.pas"/>
+        <DCCReference Include="uTradeCad.pas">
+            <Form>frmTradeCad</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Classes\uClasseTrade.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -923,6 +936,7 @@
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
             </Platforms>
+            <ModelSupport>False</ModelSupport>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>

@@ -1,14 +1,14 @@
-object frmGraoCad: TfrmGraoCad
+object frmTradeCad: TfrmTradeCad
   Left = 0
   Top = 0
-  Caption = 'Cadastro de Gr'#227'o'
+  Caption = 'Cadastro de Trade'
   ClientHeight = 99
   ClientWidth = 366
-  Color = clBtnHighlight
-  Font.Charset = ANSI_CHARSET
+  Color = clWhite
+  Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -13
-  Font.Name = 'Arial'
+  Font.Height = -11
+  Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
@@ -18,20 +18,20 @@ object frmGraoCad: TfrmGraoCad
     366
     99)
   PixelsPerInch = 96
-  TextHeight = 16
+  TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 8
     Top = 8
     Width = 350
     Height = 49
     Anchors = [akLeft, akTop, akRight, akBottom]
-    Caption = 'Nome Gr'#227'o'
+    Caption = 'Nome Trade'
     TabOrder = 0
     object txt_Descricao: TEdit
       Left = 3
       Top = 18
       Width = 344
-      Height = 24
+      Height = 21
       Hint = 'Informe o Nome do Seu Gr'#227'o'
       Align = alCustom
       Anchors = [akLeft, akTop, akRight, akBottom]
