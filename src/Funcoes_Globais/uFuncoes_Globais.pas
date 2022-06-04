@@ -5,13 +5,15 @@ interface
 uses
   System.SysUtils, Vcl.StdCtrls, Vcl.Dialogs, Vcl.Forms, Winapi.Windows;
 
-procedure Validar_Campo_Obrigatorio(Sender: TObject; vMensagem:String = 'Atenção Campo Obrigatório');
+procedure Validar_Campo_Obrigatorio(Sender: TObject; vMensagem:String = 'Atenção Existe Campos que São Obrigatório, Sem Preencher!!');
 function ApenasNumero(Key: Char; Texto: string; EhDecimal: Boolean = False; DecimalSeparator :Char = ','): Char;
+procedure Verificar_Pressed_Enter(Sender: TObject; var Key: Char);
+Function RemoveCaractere(texto: String): String;
 
 implementation
 
 
-procedure Validar_Campo_Obrigatorio(Sender: TObject; vMensagem:String = 'Atenção Campo Obrigatório');
+procedure Validar_Campo_Obrigatorio(Sender: TObject; vMensagem:String = 'Atenção Existe Campos que São Obrigatório, Sem Preencher!!');
 begin
   if trim(TEdit(Sender).Text) = '' then begin
     Application.MessageBox(PWideChar(vMensagem),'Desafio 1', MB_ICONEXCLAMATION + MB_OK);
@@ -37,6 +39,24 @@ begin
   end;
 
   Result := Key;
+end;
+
+procedure Verificar_Pressed_Enter(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then begin
+    keybd_event(VK_Tab, 0, 0, 0);   Key := #0;
+  end;
+end;
+
+Function RemoveCaractere(texto: String): String;
+begin
+  While pos(' ', texto) <> 0 Do delete(texto, pos(' ', texto), 1);
+  While pos('/', texto) <> 0 Do delete(texto, pos('/', texto), 1);
+  While pos('-', texto) <> 0 Do delete(texto, pos('-', texto), 1);
+  While pos('\', texto) <> 0 Do delete(texto, pos('\', texto), 1);
+  While pos('.', texto) <> 0 Do delete(texto, pos('.', texto), 1);
+
+  Result := texto;
 end;
 
 end.

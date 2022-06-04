@@ -2615,6 +2615,7 @@ object Form1: TForm1
         ParentFont = False
         ParentShowHint = False
         ShowHint = True
+        OnClick = btn_ProdutorClick
       end
       object B_OsNova: TSpeedButton
         Left = 505
@@ -3641,6 +3642,7 @@ object Form1: TForm1
         ParentFont = False
         ParentShowHint = False
         ShowHint = True
+        OnClick = B_CCClick
       end
     end
   end

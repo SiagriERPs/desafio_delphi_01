@@ -13,6 +13,7 @@ uses
         fDescricao : string;
         fStatus : string;
       public
+
         property vId : Integer read fId write fId;
         property vDescricao: string read fDescricao write fDescricao;
         property vStatus: string read fStatus write fStatus;
@@ -21,7 +22,7 @@ uses
         function AlterarTrade : Boolean;
         function ExcluirTrade : Boolean;
         function MudarStatus : Boolean;
-        function PesquisarTrade(vCampo, vValor : string):TTrade;
+        function PesquisarTrade(vCampo, vValor : string):Boolean;
   end;
 implementation
 
@@ -40,6 +41,7 @@ begin
   DM.qryGlobal.ParamByName('vStatus').AsString    := 'Ativo';
   try
     DM.qryGlobal.ExecSQL;
+    DM.Trans.CommitRetaining;
     Result := True;
   except
     Result := False;
@@ -57,6 +59,7 @@ begin
 
   try
     DM.qryGlobal.ExecSQL;
+    DM.Trans.CommitRetaining;
     Result := True;
   except
     Result := False;
@@ -74,6 +77,7 @@ begin
 
   try
     DM.qryGlobal.ExecSQL;
+    DM.Trans.CommitRetaining;
     Result := True;
   except
     Result := False;
@@ -89,13 +93,14 @@ begin
 
   try
     DM.qryGlobal.ExecSQL;
+    DM.Trans.CommitRetaining;
     Result := True;
   except
     Result := False;
   end;
 end;
 
-function TTrade.PesquisarTrade(vCampo, vValor : string):TTrade;
+function TTrade.PesquisarTrade(vCampo, vValor : string):Boolean;
 begin
   DM.qryGlobal.Close;
   DM.qryGlobal.SQL.Text := ' SELECT * FROM TRADE WHERE ' + vCampo + ' =:v' +vCampo ;
@@ -107,7 +112,7 @@ begin
   Self.vDescricao := DM.qryGlobal.FieldByName('DESCRICAO').AsString;
   Self.vStatus    := DM.qryGlobal.FieldByName('STATUS').AsString;
 
-  Result := Self;
+  Result := (not DM.qryGlobal.eof);
 end;
 
 end.

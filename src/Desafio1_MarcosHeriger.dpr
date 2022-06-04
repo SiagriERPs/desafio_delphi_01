@@ -11,7 +11,12 @@ uses
   uClasseProdutor in 'Classes\uClasseProdutor.pas',
   uClasseGrao in 'Classes\uClasseGrao.pas',
   uTradeCad in 'uTradeCad.pas' {frmTradeCad},
-  uClasseTrade in 'Classes\uClasseTrade.pas';
+  uClasseTrade in 'Classes\uClasseTrade.pas',
+  uSiloCons in 'uSiloCons.pas' {frmSiloCons},
+  uSiloCad in 'uSiloCad.pas' {frmSiloCad},
+  uClasseSilo in 'Classes\uClasseSilo.pas',
+  uProdutorCons in 'uProdutorCons.pas' {frmProdutorCons},
+  uProdutorCad in 'uProdutorCad.pas' {frmProdutorCad};
 
 {$R *.res}
 
@@ -20,5 +25,9 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TfrmSiloCons, frmSiloCons);
+  Application.CreateForm(TfrmSiloCad, frmSiloCad);
+  Application.CreateForm(TfrmProdutorCons, frmProdutorCons);
+  Application.CreateForm(TfrmProdutorCad, frmProdutorCad);
   Application.Run;
 end.

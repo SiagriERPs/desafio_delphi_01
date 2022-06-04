@@ -32,6 +32,8 @@ type
     procedure B_FecharClick(Sender: TObject);
     procedure btn_GraosClick(Sender: TObject);
     procedure btn_TradeClick(Sender: TObject);
+    procedure B_CCClick(Sender: TObject);
+    procedure btn_ProdutorClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,7 +47,16 @@ implementation
 
 {$R *.dfm}
 
-uses uGraoCons, uTradeCons;
+uses uGraoCons, uTradeCons, uSiloCons, uProdutorCons;
+
+procedure TForm1.btn_ProdutorClick(Sender: TObject);
+begin
+  if frmProdutorCons= nil then Application.CreateForm(TfrmProdutorCons, frmProdutorCons);
+  frmProdutorCons.vForm := 'Novo';
+  frmProdutorCons.ShowModal;
+  FreeAndNil(frmProdutorCons);
+
+end;
 
 procedure TForm1.btn_TradeClick(Sender: TObject);
 begin
@@ -53,6 +64,14 @@ begin
   frmTradeCons.vForm := 'Novo';
   frmTradeCons.ShowModal;
   FreeAndNil(frmTradeCons);
+end;
+
+procedure TForm1.B_CCClick(Sender: TObject);
+begin
+  if frmSiloCons = nil then Application.CreateForm(TfrmSiloCons, frmSiloCons);
+  frmSiloCons.vForm := 'Novo';
+  frmSiloCons.ShowModal;
+  FreeAndNil(frmSiloCons);
 end;
 
 procedure TForm1.B_FecharClick(Sender: TObject);

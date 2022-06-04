@@ -129,6 +129,23 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Classes\uClasseTrade.pas"/>
+        <DCCReference Include="uSiloCons.pas">
+            <Form>frmSiloCons</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uSiloCad.pas">
+            <Form>frmSiloCad</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Classes\uClasseSilo.pas"/>
+        <DCCReference Include="uProdutorCons.pas">
+            <Form>frmProdutorCons</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uProdutorCad.pas">
+            <Form>frmProdutorCad</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -13,6 +13,7 @@ uses
         fDescricao : string;
         fStatus : string;
       public
+
         property vId : Integer read fId write fId;
         property vDescricao: string read fDescricao write fDescricao;
         property vStatus: string read fStatus write fStatus;
@@ -21,7 +22,7 @@ uses
         function AlterarGrao : Boolean;
         function ExcluirGrao : Boolean;
         function MudarStatus : Boolean;
-        function PesquisarGrao(vCampo, vValor : string):TGrao;
+        function PesquisarGrao(vCampo, vValor : string):Boolean;
   end;
 implementation
 
@@ -29,7 +30,6 @@ uses
    Data.DB, uDM;
 
 { TGrao }
-
 function TGrao.InserirGrao: Boolean;
 begin
   DM.qryGlobal.Close;
@@ -40,6 +40,7 @@ begin
   DM.qryGlobal.ParamByName('vStatus').AsString    := 'Ativo';
   try
     DM.qryGlobal.ExecSQL;
+    DM.Trans.CommitRetaining;
     Result := True;
   except
     Result := False;
@@ -57,6 +58,7 @@ begin
 
   try
     DM.qryGlobal.ExecSQL;
+    DM.Trans.CommitRetaining;
     Result := True;
   except
     Result := False;
@@ -74,6 +76,7 @@ begin
 
   try
     DM.qryGlobal.ExecSQL;
+    DM.Trans.CommitRetaining;
     Result := True;
   except
     Result := False;
@@ -89,13 +92,14 @@ begin
 
   try
     DM.qryGlobal.ExecSQL;
+    DM.Trans.CommitRetaining;
     Result := True;
   except
     Result := False;
   end;
 end;
 
-function TGrao.PesquisarGrao(vCampo, vValor : string): TGrao;
+function TGrao.PesquisarGrao(vCampo, vValor : string): Boolean;
 begin
   DM.qryGlobal.Close;
   DM.qryGlobal.SQL.Text := ' SELECT * FROM GRAO WHERE ' + vCampo + ' =:v' +vCampo ;
@@ -107,7 +111,7 @@ begin
   Self.vDescricao := DM.qryGlobal.FieldByName('DESCRICAO').AsString;
   Self.vStatus    := DM.qryGlobal.FieldByName('STATUS').AsString;
 
-  Result := Self;
+  Result := (not DM.qryGlobal.Eof);
 end;
 
 end.

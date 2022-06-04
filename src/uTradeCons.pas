@@ -49,7 +49,7 @@ implementation
 
 {$R *.dfm}
 
-uses uFuncoes_Globais, uDM, uTradeCad;
+uses uFuncoes_Globais, uDM, uTradeCad, uSiloCons, uSiloCad;
 
 function TfrmTradeCons.GerarWhere():String;
 Var
@@ -136,15 +136,33 @@ begin
     abort;
   end;
 
-  if vForm = 'Novo' then begin
 
+
+  if vForm = 'Novo' then begin
     if frmTradeCad = nil then Application.CreateForm(TfrmTradeCad, frmTradeCad);
     frmTradeCad.vForm := 'Alteracao';
     frmTradeCad.vID := DM.qryGraosID.AsString;
 
     frmTradeCad.ShowModal;
     FreeAndNil(frmTradeCad);
+  end
+  else if  vForm = 'CONSULTA_SILO' then begin
+    frmSiloCons.vID_Pesquisa := DM.qryGraosID.AsString;
+    close;
+    abort;
+  end
+  else if  vForm = 'CONSULTA_SILOCAD' then begin
+    if  DM.qryGraosStatus.AsString = 'Inativo' then begin
+      Application.MessageBox(PWideChar('ATENÇÃO!!' + #13 + ' Trade Se Encontra Inativa'), 'Desafio 1', MB_ICONEXCLAMATION + MB_OK);
+      abort;
+    end;
+
+    frmSiloCad.vID_Pesquisa := DM.qryGraosID.AsString;
+    close;
+    abort;
   end;
+
+
 
   btn_Pesquisar.Click;
 end;
@@ -162,7 +180,6 @@ begin
   TDBGrid(Sender).Canvas.FillRect(Rect);
   TDBGrid(Sender).DefaultDrawColumnCell(Rect,DataCol,Column,State);
 end;
-
 
 procedure TfrmTradeCons.txt_FiltroKeyPress(Sender: TObject; var Key: Char);
 begin

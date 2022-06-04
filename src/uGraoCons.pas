@@ -49,7 +49,7 @@ implementation
 
 {$R *.dfm}
 
-uses uGraoCad, uDM, uFuncoes_Globais;
+uses uGraoCad, uDM, uFuncoes_Globais, uSiloCons, uSiloCad;
 
 function TfrmGraoCons.GerarWhere():String;
 Var
@@ -123,6 +123,21 @@ begin
 
     frmGraoCad.ShowModal;
     FreeAndNil(frmGraoCad);
+  end
+  else if  vForm = 'CONSULTA_SILO' then begin
+    frmSiloCons.vID_Pesquisa := DM.qryGraosID.AsString;
+    close;
+    abort;
+  end
+  else if vForm = 'CONSULTA_SILOCAD' then begin
+    if  DM.qryGraosStatus.AsString = 'Inativo' then begin
+      Application.MessageBox(PWideChar('ATENÇÃO!!' + #13 + ' Trade Se Encontra Inativa'), 'Desafio 1', MB_ICONEXCLAMATION + MB_OK);
+      abort;
+    end;
+
+    frmSiloCad.vID_Pesquisa := DM.qryGraosID.AsString;
+    close;
+    abort;
   end;
 
   btn_Pesquisar.Click;

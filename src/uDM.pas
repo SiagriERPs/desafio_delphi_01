@@ -16,6 +16,22 @@ type
     qryGraosID: TIntegerField;
     qryGraosDESCRICAO: TIBStringField;
     qryGraosSTATUS: TIBStringField;
+    qrySilo: TIBQuery;
+    dsSilo: TDataSource;
+    qrySiloID: TIntegerField;
+    qrySiloDESCRICAO: TIBStringField;
+    qrySiloCAPACIDADE: TFloatField;
+    qrySiloSTATUS: TIBStringField;
+    qrySiloID_GRAO: TIntegerField;
+    qrySiloGRAOS: TIBStringField;
+    qrySiloID_TRADE: TIntegerField;
+    qrySiloTRADES: TIBStringField;
+    qryProdutor: TIBQuery;
+    dsProdutor: TDataSource;
+    qryProdutorID: TIntegerField;
+    qryProdutorNOME: TIBStringField;
+    qryProdutorCNPJ: TIBStringField;
+    qryProdutorSTATUS: TIBStringField;
   private
     { Private declarations }
   public
