@@ -16,7 +16,10 @@ uses
   uSiloCad in 'uSiloCad.pas' {frmSiloCad},
   uClasseSilo in 'Classes\uClasseSilo.pas',
   uProdutorCons in 'uProdutorCons.pas' {frmProdutorCons},
-  uProdutorCad in 'uProdutorCad.pas' {frmProdutorCad};
+  uProdutorCad in 'uProdutorCad.pas' {frmProdutorCad},
+  uContratoCons in 'uContratoCons.pas' {frmContratoCons},
+  uContratoCad in 'uContratoCad.pas' {frmContratoCad},
+  uClasseContrato in 'Classes\uClasseContrato.pas';
 
 {$R *.res}
 
@@ -29,5 +32,7 @@ begin
   Application.CreateForm(TfrmSiloCad, frmSiloCad);
   Application.CreateForm(TfrmProdutorCons, frmProdutorCons);
   Application.CreateForm(TfrmProdutorCad, frmProdutorCad);
+  Application.CreateForm(TfrmContratoCons, frmContratoCons);
+  Application.CreateForm(TfrmContratoCad, frmContratoCad);
   Application.Run;
 end.

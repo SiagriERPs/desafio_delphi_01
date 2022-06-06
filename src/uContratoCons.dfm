@@ -1,34 +1,86 @@
-object frmProdutorCons: TfrmProdutorCons
+object frmContratoCons: TfrmContratoCons
   Left = 0
   Top = 0
-  Caption = 'Consulta de Cadastro de Produtor'
-  ClientHeight = 380
-  ClientWidth = 594
+  HelpType = htKeyword
+  HelpKeyword = 'S'
+  Caption = 'Consulta de Cadastro de Contratos'
+  ClientHeight = 508
+  ClientWidth = 1075
   Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
   Font.Name = 'Arial'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
   Position = poScreenCenter
+  OnCloseQuery = FormCloseQuery
+  OnKeyDown = FormKeyDown
   OnShow = FormShow
   DesignSize = (
-    594
-    380)
+    1075
+    508)
   PixelsPerInch = 96
   TextHeight = 16
   object grp_Filtros: TGroupBox
     Left = 8
     Top = 8
-    Width = 578
-    Height = 65
+    Width = 1059
+    Height = 64
     Anchors = [akLeft, akTop, akRight]
     Caption = 'Filtros'
     TabOrder = 0
+    ExplicitWidth = 1111
     DesignSize = (
-      578
-      65)
+      1059
+      64)
+    object lbl_Trade: TLabel
+      Left = 365
+      Top = 16
+      Width = 32
+      Height = 16
+      Anchors = [akTop, akRight]
+      Caption = 'Trade'
+    end
+    object Label1: TLabel
+      Left = 563
+      Top = 16
+      Width = 15
+      Height = 16
+      Hint = 'Precione F1 Para Buscar as Trade Cadastradas'
+      Anchors = [akTop, akRight]
+      Caption = 'F1'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlue
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 584
+      Top = 16
+      Width = 28
+      Height = 16
+      Anchors = [akTop, akRight]
+      Caption = 'Gr'#227'o'
+    end
+    object Label3: TLabel
+      Left = 781
+      Top = 16
+      Width = 15
+      Height = 16
+      Hint = 'Precione F1 Para Buscar as Trade Cadastradas'
+      Anchors = [akTop, akRight]
+      Caption = 'F2'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlue
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+    end
     object lbl_Tipo: TLabel
       Left = 8
       Top = 16
@@ -37,64 +89,49 @@ object frmProdutorCons: TfrmProdutorCons
       Caption = 'Tipo'
     end
     object lbl_Filtro: TLabel
-      Left = 159
+      Left = 112
       Top = 16
       Width = 58
       Height = 16
       Caption = 'Descri'#231#227'o'
     end
-    object lbl_Status: TLabel
-      Left = 425
-      Top = 16
-      Width = 38
+    object Label4: TLabel
+      Left = 802
+      Top = 17
+      Width = 49
       Height = 16
-      Anchors = [akRight, akBottom]
-      Caption = 'Status'
-      ExplicitLeft = 431
+      Anchors = [akTop, akRight]
+      Caption = 'Produtor'
     end
-    object txt_Filtro: TEdit
-      Left = 159
+    object Label5: TLabel
+      Left = 999
+      Top = 16
+      Width = 15
+      Height = 16
+      Hint = 'Precione F3 Para Buscar os Produtores Cadastradas'
+      Anchors = [akTop, akRight]
+      Caption = 'F3'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlue
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+    end
+    object txt_Trade: TEdit
+      Left = 413
       Top = 34
-      Width = 260
+      Width = 165
       Height = 24
       Hint = 'Informe o Nome do Seu Gr'#227'o'
       Align = alCustom
-      Anchors = [akLeft, akTop, akRight]
-      TabOrder = 0
-      OnKeyPress = txt_FiltroKeyPress
-    end
-    object cbo_Tipo: TComboBox
-      Left = 8
-      Top = 34
-      Width = 145
-      Height = 22
-      Style = csOwnerDrawFixed
-      ItemIndex = 1
-      TabOrder = 1
-      Text = 'Descri'#231#227'o'
-      OnSelect = cbo_TipoSelect
-      Items.Strings = (
-        'C'#243'digo'
-        'Descri'#231#227'o'
-        'CNPJ')
-    end
-    object cbo_Status: TComboBox
-      Left = 425
-      Top = 34
-      Width = 106
-      Height = 22
-      Style = csOwnerDrawFixed
-      Anchors = [akRight, akBottom]
-      ItemIndex = 0
-      TabOrder = 2
-      Text = 'Geral'
-      Items.Strings = (
-        'Geral'
-        'Ativo'
-        'Inativo')
+      Anchors = [akTop, akRight]
+      Enabled = False
+      ReadOnly = True
+      TabOrder = 3
     end
     object btn_Pesquisar: TBitBtn
-      Left = 537
+      Left = 1020
       Top = 34
       Width = 33
       Height = 22
@@ -143,26 +180,110 @@ object frmProdutorCons: TfrmProdutorCons
         20032434373A3A37321342424242421D25030F2D37373737311042424242420D
         2D2D1C162430333429424242424242421E463F0F0316252E0842424242424242
         4227312D21252314424242424242424242420E141B1B42424242}
-      TabOrder = 3
+      TabOrder = 6
       OnClick = btn_PesquisarClick
     end
+    object txt_Grao: TEdit
+      Left = 631
+      Top = 34
+      Width = 165
+      Height = 24
+      Hint = 'Informe o Nome do Seu Gr'#227'o'
+      Align = alCustom
+      Anchors = [akTop, akRight]
+      Enabled = False
+      ReadOnly = True
+      TabOrder = 5
+    end
+    object txt_Filtro: TEdit
+      Left = 112
+      Top = 34
+      Width = 247
+      Height = 24
+      Hint = 'Informe o Nome do Seu Gr'#227'o'
+      Align = alCustom
+      Anchors = [akLeft, akTop, akRight]
+      TabOrder = 1
+      OnKeyPress = txt_FiltroKeyPress
+    end
+    object cbo_Tipo: TComboBox
+      Left = 8
+      Top = 34
+      Width = 98
+      Height = 22
+      Style = csOwnerDrawFixed
+      ItemIndex = 1
+      TabOrder = 0
+      Text = 'CNPJ'
+      OnKeyPress = KeyPress_Geral
+      OnSelect = cbo_TipoSelect
+      Items.Strings = (
+        'C'#243'digo'
+        'CNPJ')
+    end
+    object txt_IDTrade: TEdit
+      Left = 365
+      Top = 34
+      Width = 49
+      Height = 24
+      Hint = 'Informe o Nome do Seu Gr'#227'o'
+      Align = alCustom
+      Anchors = [akTop, akRight]
+      TabOrder = 2
+      OnExit = txt_IDTradeExit
+      OnKeyPress = txt_IDTradeKeyPress
+    end
+    object txt_IDGrao: TEdit
+      Left = 584
+      Top = 34
+      Width = 49
+      Height = 24
+      Hint = 'Informe o Nome do Seu Gr'#227'o'
+      Align = alCustom
+      Anchors = [akTop, akRight]
+      TabOrder = 4
+      OnExit = txt_IDGraoExit
+      OnKeyPress = txt_IDGraoKeyPress
+    end
+    object txt_Produtor: TEdit
+      Left = 849
+      Top = 34
+      Width = 165
+      Height = 24
+      Hint = 'Informe o Nome do Seu Gr'#227'o'
+      Align = alCustom
+      Anchors = [akTop, akRight]
+      Enabled = False
+      ReadOnly = True
+      TabOrder = 7
+    end
+    object txt_IDProdutor: TEdit
+      Left = 802
+      Top = 34
+      Width = 49
+      Height = 24
+      Hint = 'Informe o Nome do Seu Gr'#227'o'
+      Align = alCustom
+      Anchors = [akTop, akRight]
+      TabOrder = 8
+      OnExit = txt_IDProdutorExit
+      OnKeyPress = txt_IDProdutorKeyPress
+    end
   end
-  object grp_ListaGraos: TGroupBox
+  object grp_ListaSilo: TGroupBox
     Left = 8
-    Top = 79
-    Width = 578
-    Height = 262
+    Top = 78
+    Width = 1059
+    Height = 391
     Anchors = [akLeft, akTop, akRight, akBottom]
-    Caption = 'Lista Produtor'
+    Caption = 'Lista de Contratos'
     TabOrder = 1
-    DesignSize = (
-      578
-      262)
+    ExplicitWidth = 1111
     object lbl_Info: TLabel
       AlignWithMargins = True
       Left = 5
-      Top = 243
-      Width = 568
+      Top = 372
+      Width = 1049
       Height = 14
       Align = alBottom
       Alignment = taCenter
@@ -175,28 +296,13 @@ object frmProdutorCons: TfrmProdutorCons
       ParentFont = False
       ExplicitWidth = 225
     end
-    object lbl_Legenda: TLabel
-      Left = 497
-      Top = 3
-      Width = 74
-      Height = 14
-      Anchors = [akTop, akRight]
-      Caption = 'Status Inativo'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Arial'
-      Font.Style = [fsBold]
-      ParentFont = False
-      ExplicitLeft = 503
-    end
-    object grd_ListaProdutor: TDBGrid
+    object grd_ListaContratos: TDBGrid
       Left = 2
       Top = 18
-      Width = 574
-      Height = 222
+      Width = 1055
+      Height = 351
       Align = alClient
-      DataSource = DM.dsProdutor
+      DataSource = DM.dsContrato
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 0
       TitleFont.Charset = ANSI_CHARSET
@@ -204,8 +310,8 @@ object frmProdutorCons: TfrmProdutorCons
       TitleFont.Height = -13
       TitleFont.Name = 'Arial'
       TitleFont.Style = []
-      OnDrawColumnCell = grd_ListaProdutorDrawColumnCell
-      OnDblClick = grd_ListaProdutorDblClick
+      OnDrawColumnCell = grd_ListaContratosDrawColumnCell
+      OnDblClick = grd_ListaContratosDblClick
       Columns = <
         item
           Expanded = False
@@ -215,30 +321,31 @@ object frmProdutorCons: TfrmProdutorCons
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Title.Alignment = taCenter
           Title.Caption = 'C'#243'digo'
           Title.Font.Charset = ANSI_CHARSET
           Title.Font.Color = clWindowText
           Title.Font.Height = -13
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
-          Width = 66
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'NOME'
+          FieldName = 'QTDE_GERAL'
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
-          Title.Caption = 'Nome'
+          Title.Alignment = taCenter
+          Title.Caption = 'Armazenado'
           Title.Font.Charset = ANSI_CHARSET
           Title.Font.Color = clWindowText
           Title.Font.Height = -13
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
-          Width = 259
+          Width = 100
           Visible = True
         end
         item
@@ -254,44 +361,68 @@ object frmProdutorCons: TfrmProdutorCons
           Title.Font.Height = -13
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
-          Width = 113
+          Width = 156
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'STATUS'
+          FieldName = 'PRODUTOR'
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
-          Title.Caption = 'Status'
+          Title.Caption = 'Produtor'
           Title.Font.Charset = ANSI_CHARSET
           Title.Font.Color = clWindowText
           Title.Font.Height = -13
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
-          Width = 85
+          Width = 337
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'TRADE'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Title.Caption = 'Trade'
+          Title.Font.Charset = ANSI_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -13
+          Title.Font.Name = 'Arial'
+          Title.Font.Style = [fsBold]
+          Width = 230
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'GRAO'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Title.Caption = 'Gr'#227'o'
+          Title.Font.Charset = ANSI_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -13
+          Title.Font.Name = 'Arial'
+          Title.Font.Style = [fsBold]
+          Width = 122
           Visible = True
         end>
     end
-    object pnl_CorLegenda: TPanel
-      Left = 479
-      Top = 3
-      Width = 17
-      Height = 15
-      Anchors = [akTop, akRight]
-      Color = clRed
-      ParentBackground = False
-      TabOrder = 1
-    end
   end
-  object btn_Salvar: TBitBtn
+  object btn_Novo: TBitBtn
     Left = 8
-    Top = 342
+    Top = 470
     Width = 89
     Height = 30
-    Hint = 'Click Para Cadastrar um Gr'#227'o Novo'
+    Hint = 'Click Para Cadastrar um Silo Novo'
     Anchors = [akLeft, akBottom]
     Caption = '&Novo'
     Glyph.Data = {
@@ -322,14 +453,14 @@ object frmProdutorCons: TfrmProdutorCons
       FFFFFFFFFFFFFFFFFFFFFFFFFFE3E5E4AFB5B2A6ACAAA6ACA9A5ABA9A5ABA8A5
       ABA8A6ACAABFC3C1E6E7E7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     TabOrder = 2
-    OnClick = btn_SalvarClick
+    OnClick = btn_NovoClick
   end
   object btn_Fechar: TBitBtn
-    Left = 497
-    Top = 342
+    Left = 978
+    Top = 470
     Width = 89
     Height = 30
-    Hint = 'Click Para Fechar a Tela de Gr'#227'o'
+    Hint = 'Click Para Fechar a Tela'
     Anchors = [akRight, akBottom]
     Caption = '&Fechar'
     Glyph.Data = {
@@ -361,5 +492,6 @@ object frmProdutorCons: TfrmProdutorCons
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     TabOrder = 3
     OnClick = btn_FecharClick
+    ExplicitLeft = 1030
   end
 end

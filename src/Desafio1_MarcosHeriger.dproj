@@ -4,7 +4,7 @@
         <ProjectVersion>19.2</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -146,6 +146,15 @@
             <Form>frmProdutorCad</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uContratoCons.pas">
+            <Form>frmContratoCons</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uContratoCad.pas">
+            <Form>frmContratoCad</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Classes\uClasseContrato.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

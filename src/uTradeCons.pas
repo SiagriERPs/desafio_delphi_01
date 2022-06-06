@@ -49,7 +49,7 @@ implementation
 
 {$R *.dfm}
 
-uses uFuncoes_Globais, uDM, uTradeCad, uSiloCons, uSiloCad;
+uses uFuncoes_Globais, uDM, uTradeCad, uSiloCons, uSiloCad, uContratoCons, uContratoCad;
 
 function TfrmTradeCons.GerarWhere():String;
 Var
@@ -151,6 +151,11 @@ begin
     close;
     abort;
   end
+  else if  vForm = 'CONSULTA_CONTRATO' then begin
+    frmContratoCons.vID_Pesquisa := DM.qryGraosID.AsString;
+    close;
+    abort;
+  end
   else if  vForm = 'CONSULTA_SILOCAD' then begin
     if  DM.qryGraosStatus.AsString = 'Inativo' then begin
       Application.MessageBox(PWideChar('ATENÇÃO!!' + #13 + ' Trade Se Encontra Inativa'), 'Desafio 1', MB_ICONEXCLAMATION + MB_OK);
@@ -158,6 +163,16 @@ begin
     end;
 
     frmSiloCad.vID_Pesquisa := DM.qryGraosID.AsString;
+    close;
+    abort;
+  end
+  else if  vForm = 'CONSULTA_CONTRATOCAD' then begin
+    if  DM.qryGraosStatus.AsString = 'Inativo' then begin
+      Application.MessageBox(PWideChar('ATENÇÃO!!' + #13 + ' Trade Se Encontra Inativa'), 'Desafio 1', MB_ICONEXCLAMATION + MB_OK);
+      abort;
+    end;
+
+    frmContratoCad.vID_Pesquisa := DM.qryGraosID.AsString;
     close;
     abort;
   end;

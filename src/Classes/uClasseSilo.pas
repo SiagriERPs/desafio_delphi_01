@@ -158,7 +158,7 @@ begin
   self.vGrao.PesquisarGrao('ID', DM.qrySilo.FieldByName('ID_GRAO').AsString);
   self.vTrade.PesquisarTrade('ID', DM.qrySilo.FieldByName('ID_TRADE').AsString);
 
-  Result := (not DM.qryGlobal.eof);
+  Result := (not DM.qrySilo.eof);
 end;
 
 end.

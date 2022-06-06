@@ -49,7 +49,7 @@ implementation
 
 {$R *.dfm}
 
-uses uGraoCad, uDM, uFuncoes_Globais, uSiloCons, uProdutorCad;
+uses uGraoCad, uDM, uFuncoes_Globais, uSiloCons, uProdutorCad, uContratoCons, uContratoCad;
 
 function TfrmProdutorCons.GerarWhere():String;
 Var
@@ -127,6 +127,21 @@ begin
 
     frmProdutorCad.ShowModal;
     FreeAndNil(frmProdutorCad);
+  end
+  else if  vForm = 'CONSULTA_CONTRATO' then begin
+    frmContratoCons.vID_Pesquisa := DM.qryProdutorID.AsString;
+    close;
+    abort;
+  end
+  else if  vForm = 'CONSULTA_CONTRATOCAD' then begin
+    if  DM.qryGraosStatus.AsString = 'Inativo' then begin
+      Application.MessageBox(PWideChar('ATENÇÃO!!' + #13 + ' Trade Se Encontra Inativa'), 'Desafio 1', MB_ICONEXCLAMATION + MB_OK);
+      abort;
+    end;
+
+    frmContratoCad.vID_Pesquisa := DM.qryProdutorID.AsString;
+    close;
+    abort;
   end;
 
   btn_Pesquisar.Click;

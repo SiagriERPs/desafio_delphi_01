@@ -9,31 +9,22 @@ uses
 
 type
   TForm1 = class(TForm)
-    MainMenu1: TMainMenu;
-    Cadastro1: TMenuItem;
-    N1Bancos1: TMenuItem;
-    N7Cartes1: TMenuItem;
-    Relatrio1: TMenuItem;
-    N1Produtos1: TMenuItem;
     Image1: TImage;
     StatusBar1: TStatusBar;
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
-    B_Venda: TSpeedButton;
-    B_Troca: TSpeedButton;
     btn_Graos: TSpeedButton;
     btn_Produtor: TSpeedButton;
-    B_OsNova: TSpeedButton;
     B_OsConsulta: TSpeedButton;
     btn_Trade: TSpeedButton;
     B_Fechar: TSpeedButton;
-    B_Orc: TSpeedButton;
     B_CC: TSpeedButton;
     procedure B_FecharClick(Sender: TObject);
     procedure btn_GraosClick(Sender: TObject);
     procedure btn_TradeClick(Sender: TObject);
     procedure B_CCClick(Sender: TObject);
     procedure btn_ProdutorClick(Sender: TObject);
+    procedure B_OsConsultaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,7 +38,7 @@ implementation
 
 {$R *.dfm}
 
-uses uGraoCons, uTradeCons, uSiloCons, uProdutorCons;
+uses uGraoCons, uTradeCons, uSiloCons, uProdutorCons, uContratoCons;
 
 procedure TForm1.btn_ProdutorClick(Sender: TObject);
 begin
@@ -77,6 +68,15 @@ end;
 procedure TForm1.B_FecharClick(Sender: TObject);
 begin
   if Application.MessageBox('Deseja Sair do Sistema? ', 'Desafio 1', mb_YesNo + mb_IconQuestion) = mrYes then close;
+end;
+
+procedure TForm1.B_OsConsultaClick(Sender: TObject);
+begin
+
+  if frmContratoCons= nil then Application.CreateForm(TfrmContratoCons, frmContratoCons);
+  frmContratoCons.vForm := 'Novo';
+  frmContratoCons.ShowModal;
+  FreeAndNil(frmContratoCons);
 end;
 
 procedure TForm1.btn_GraosClick(Sender: TObject);

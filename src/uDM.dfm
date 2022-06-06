@@ -1,10 +1,10 @@
 object DM: TDM
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
   Height = 404
   Width = 675
   object Conexao: TIBDatabase
-    Connected = True
-    DatabaseName = 'C:\Aliare\desafio_delphi_01\data\DBALIARE.FDB'
+    DatabaseName = '.\DB\DBALIARE.FDB'
     Params.Strings = (
       'user_name=sysdba'
       'password=masterkey')
@@ -14,7 +14,6 @@ object DM: TDM
     Top = 32
   end
   object Trans: TIBTransaction
-    Active = True
     DefaultDatabase = Conexao
     Params.Strings = (
       'read_committed'
@@ -127,7 +126,6 @@ object DM: TDM
   object qryProdutor: TIBQuery
     Database = Conexao
     Transaction = Trans
-    Active = True
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -162,5 +160,80 @@ object DM: TDM
     DataSet = qryProdutor
     Left = 408
     Top = 160
+  end
+  object qryContrato: TIBQuery
+    Database = Conexao
+    Transaction = Trans
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'SELECT c.id, c.qtde_geral, '
+      '       c.id_produtor, p.nome PRODUTOR, p.CNPJ,'
+      '       c.id_trade, t.descricao TRADE,'
+      '       c.id_grao, g.descricao GRAO'
+      'FROM CONTRATO c'
+      'INNER JOIN GRAO g on g.id = c.id_grao'
+      'INNER JOIN TRADE t on t.id = c.id_trade'
+      'INNER JOIN PRODUTOR p on p.id = c.id_produtor')
+    Left = 328
+    Top = 232
+    object qryContratoID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'CONTRATO.ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryContratoQTDE_GERAL: TFloatField
+      FieldName = 'QTDE_GERAL'
+      Origin = 'CONTRATO.QTDE_GERAL'
+    end
+    object qryContratoID_PRODUTOR: TIntegerField
+      FieldName = 'ID_PRODUTOR'
+      Origin = 'CONTRATO.ID_PRODUTOR'
+    end
+    object qryContratoPRODUTOR: TIBStringField
+      FieldName = 'PRODUTOR'
+      Origin = 'PRODUTOR.NOME'
+      Size = 100
+    end
+    object qryContratoID_TRADE: TIntegerField
+      FieldName = 'ID_TRADE'
+      Origin = 'CONTRATO.ID_TRADE'
+    end
+    object qryContratoTRADE: TIBStringField
+      FieldName = 'TRADE'
+      Origin = 'TRADE.DESCRICAO'
+      Size = 100
+    end
+    object qryContratoID_GRAO: TIntegerField
+      FieldName = 'ID_GRAO'
+      Origin = 'CONTRATO.ID_GRAO'
+    end
+    object qryContratoGRAO: TIBStringField
+      FieldName = 'GRAO'
+      Origin = 'GRAO.DESCRICAO'
+      Size = 100
+    end
+    object qryContratoCNPJ: TIBStringField
+      FieldName = 'CNPJ'
+      Origin = 'PRODUTOR.CNPJ'
+      EditMask = '99.999.999/9999-99;0; '
+      Size = 14
+    end
+  end
+  object dsContrato: TDataSource
+    DataSet = qryContrato
+    Left = 408
+    Top = 232
+  end
+  object qryInsert: TIBQuery
+    Database = Conexao
+    Transaction = Trans
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    Left = 208
+    Top = 144
   end
 end
