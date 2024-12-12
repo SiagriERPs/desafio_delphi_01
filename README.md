@@ -29,7 +29,7 @@ Cuidado com o limite de cada silo e suas validações básicas.
   
 	O aplicativo deve permitir filtrar os contratos informando o CNPJ do produtor ou da trade.
 	O aplicativo deve permitir gerenciar vários contratos de venda, de várias trades e produtores diferentes.
-	O aplicativo deve permitir imprimir um relatório contendo todos os contratos cadastrados informando o nome do produto, nome da trade, o grão do contrato e a quantidade armazenada em kg.
+	O aplicativo deve permitir imprimir um relatório contendo todos os contratos cadastrados informando o nome do produtor, nome da trade, o grão do contrato e a quantidade armazenada em kg.
   
   Siga abaixo a estrutura de diretórios  já criada para este projeto:
   
